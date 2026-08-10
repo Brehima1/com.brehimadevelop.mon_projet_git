@@ -1,3 +1,2 @@
 Changements pour la fonctionnalité 1
 Ligne de test pour reset
-Erreur a annuler
