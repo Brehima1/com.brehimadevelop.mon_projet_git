@@ -1,1 +1,1 @@
-print('Modification par Développeur B')
+print('Fonctionnalite B par DevB')
