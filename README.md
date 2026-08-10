@@ -12,18 +12,30 @@ Création du fichier README.md
 Exercices Git — Progression par niveau
 
 Niveau : Débutant
-Objectif : apprendre les bases de Git en pratiquant progressivement les commandes essentielles.
 
-Sommaire
-Prérequis
+Objectif : apprendre les bases de Git en pratiquant progressivement
+
+les commandes essentielles.
+
+# Sommaire
+
+# Prérequis
+
 Exercice 1 — Initialisation d’un dépôt
+
 Exercice 2 — Suivi des modifications
+
 Exercice 3 — Historique et navigation
+
 Exercice 4 — Ignorer des fichiers
+
 Exercice 5 — Connexion à un dépôt distant
+
 Commandes Git à retenir
+
 Objectif final
-Prérequis
+
+# Prérequis
 
 Avant de commencer, assure-toi d'avoir Git installé sur ton ordinateur.
 
@@ -40,15 +52,21 @@ git version 2.x.x
 Il est également recommandé de disposer d'un compte sur une plateforme Git distante comme GitHub.
 
 ## Exercice 1 — Initialisation d’un dépôt
+
 ## Objectif
 
 ## Apprendre à :
 
 ## créer un projet ;
+
 ## initialiser un dépôt Git ;
+
 ## créer un fichier ;
+
 ## ajouter un fichier à l'index ;
+
 ## effectuer son premier commit.
+
 ## Consignes
 1. Créer le dossier du projet
 
@@ -62,6 +80,7 @@ cd mon_projet_git
 2. Initialiser Git
 
 Initialise un nouveau dépôt Git :
+
 ```bash 
 git init
 ```
@@ -70,8 +89,10 @@ Git crée alors un dossier caché .git contenant les informations nécessaires a
 3. Créer le fichier README.md
 
 Crée un fichier README.md :
-touch README.md
 
+```bash
+touch README.md
+```
 Ajoute ensuite une courte description du projet.
 
 Par exemple :
@@ -132,6 +153,7 @@ Deuxième note.
 Je découvre Git.
 
 2. Vérifier l'état du dépôt
+
 git status
 
 Le fichier notes.txt doit apparaître comme non suivi.
@@ -232,11 +254,15 @@ git log
 Tu verras notamment :
 
 l'identifiant du commit ;
+
 l'auteur ;
+
 la date ;
+
 le message du commit.
 
 Pour obtenir un affichage plus compact :
+
 ```bash 
 git log --oneline
 
@@ -252,7 +278,9 @@ Utilise :
 ```bash 
 git log -p -- fichier1.txt
 ```
-Cette commande affiche l'historique du fichier ainsi que les modifications apportées à chaque version.
+Cette commande affiche l'historique du fichier ainsi que les modifications apportées à chaque 
+
+version.
 
 4. Explorer une ancienne version
 
@@ -281,6 +309,7 @@ git switch main
 ```
 
 Si ta branche principale s'appelle master :
+
 ```bash 
 git switch master
 ```
@@ -293,7 +322,9 @@ git checkout <commit>
 ```
 permet également d'explorer un ancien commit.
 
-Cependant, pour les versions récentes de Git, git switch est généralement plus clair pour changer de branche ou explorer un commit.
+Cependant, pour les versions récentes de Git, git switch est généralement plus clair pour changer 
+
+de branche ou explorer un commit.
 
 ## Compétences acquises
 
@@ -314,10 +345,15 @@ Apprendre à empêcher Git de suivre certains fichiers ou dossiers.
 Cette fonctionnalité est particulièrement importante pour éviter de versionner :
 
 des fichiers contenant des informations sensibles ;
+
 des fichiers temporaires ;
+
 des fichiers générés automatiquement ;
+
 des dépendances ;
+
 des fichiers propres à ton environnement local.
+
 1. Créer un fichier secret.txt
 
 Crée le fichier :
@@ -365,6 +401,7 @@ touch temp/fichier2.txt
 4. Modifier le .gitignore
 
 Ajoute cette règle :
+
 ```bash 
 temp/
 
@@ -382,9 +419,13 @@ Les fichiers contenus dans temp/ doivent être ignorés.
 
 ## Attention
 
-.gitignore empêche principalement Git de commencer à suivre des fichiers qui ne sont pas encore suivis.
+.gitignore empêche principalement Git de commencer à suivre des fichiers qui ne sont pas encore 
 
-Si un fichier a déjà été ajouté à Git et commité, l'ajouter ensuite au .gitignore ne suffit pas à le retirer du suivi.
+suivis.
+
+Si un fichier a déjà été ajouté à Git et commité, l'ajouter ensuite au .gitignore ne suffit pas à 
+
+le retirer du suivi.
 
 ## Compétences acquises
 
@@ -410,7 +451,9 @@ Par exemple, nomme-le :
 
 mon_projet_git
 
- Pour cet exercice, évite de générer automatiquement un nouveau README.md sur le dépôt distant si ton dépôt local en possède déjà un.
+ Pour cet exercice, évite de générer automatiquement un nouveau README.md sur le dépôt distant si 
+ 
+ ton dépôt local en possède déjà un.
 
 2. Connecter le dépôt local au dépôt distant
 
@@ -478,20 +521,33 @@ Voici les principales commandes rencontrées dans ces exercices :
 
 Commande	Utilité 
 
-git init :	Initialise un dépôt Git
-git status : Affiche l'état du dépôt
-git add	: Ajoute des fichiers à l'index
-git commit	: Enregistre les modifications
-git diff : Affiche les modifications non commitées
-git log :	Affiche l'historique
-git log --oneline : Affiche l'historique de manière compacte
-git log -p	: Affiche l'historique avec les modifications
-git switch : Change de branche ou explore un commit
-git remote add	: Ajoute un dépôt distant
-git remote -v	: Affiche les dépôts distants
-git push : Envoie les commits vers le dépôt distant
-git clone: Copie un dépôt distant en local
-git check-ignore : Vérifie pourquoi un fichier est ignoré
+git init :	Initialise un dépôt Git;
+
+git status : Affiche l'état du dépôt;
+
+git add	: Ajoute des fichiers à l'index;
+
+git commit	: Enregistre les modifications;
+
+git diff : Affiche les modifications non commitées;
+
+git log :	Affiche l'historique;
+
+git log --oneline : Affiche l'historique de manière compacte;
+
+git log -p	: Affiche l'historique avec les modifications;
+
+git switch : Change de branche ou explore un commit;
+
+git remote add	: Ajoute un dépôt distant;
+
+git remote -v	: Affiche les dépôts distants;
+
+git push : Envoie les commits vers le dépôt distant;
+
+git clone: Copie un dépôt distant en local;
+
+git check-ignore : Vérifie pourquoi un fichier est ignor.
 
 ## Le cycle Git fondamental
 
@@ -520,10 +576,12 @@ La logique principale de Git peut être résumée ainsi :
 ```
 Le cycle de travail classique est donc :
 
+```bash
 git status
 git add .
 git commit -m "Description du changement"
 git push
+```
 
 ## Objectif final
 
