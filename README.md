@@ -1,25 +1,16 @@
 # Mon Projet sur le Git 
 
-```bash
-mkdire mon_projet_git
-cd mon_projet_git
-git init
-Création du fichier README.md
-```
+## Exercices Git — Progression par niveau
 
+# Niveau : Débutant
 
-
-Exercices Git — Progression par niveau
-
-Niveau : Débutant
-
-Objectif : apprendre les bases de Git en pratiquant progressivement
+# Objectif : apprendre les bases de Git en pratiquant progressivement
 
 les commandes essentielles.
 
-# Sommaire
+## Sommaire
 
-# Prérequis
+## Prérequis
 
 Exercice 1 — Initialisation d’un dépôt
 
@@ -42,7 +33,6 @@ Avant de commencer, assure-toi d'avoir Git installé sur ton ordinateur.
 Vérifie l'installation avec :
 
 ```bash 
-
 git --version
 ```
 Tu devrais obtenir une réponse similaire à :
