@@ -1,5 +1,1 @@
-print('Bienvenue dans l app')
-print('Fonctionnalite A')
-print("Option B corrigée")
-print('Fin du programme')
-print('Version stable')
+print('Modification par Développeur B')
