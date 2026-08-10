@@ -13,15 +13,18 @@ Bienvenue dans ce TP consacré aux fonctionnalités avancées de **Git**. Ce doc
 - [Exercice 5 : Travail Hors-ligne et Résolution de Conflits Complexes](#exercice-5--travail-hors-ligne-et-résolution-de-conflits-complexes)
 
 ---
-
+ 
 ##  Exercice 1 : Réécriture d’historique avec `rebase -i`
 
 ### Objectif
-Apprendre à nettoyer l'historique de commits avant de partager son code (`squash`, reformatage de messages, suppression de commits inutiles).
+Apprendre à nettoyer l'historique de commits avant de partager son code (`squash`, reformatage de messages, 
+
+suppression de commits inutiles).
 
 ###  Pas-à-pas d'exécution
 
 1. **Créer des commits volontairement désordonnés :**
+
    ```bash
    mkdir tp-git-avance && cd tp-git-avance
    git init
@@ -38,7 +41,9 @@ Apprendre à nettoyer l'historique de commits avant de partager son code (`squas
    ```
 
 3. **Configurer les instructions dans l'éditeur (VS Code / Vim) :**
+
    L'éditeur s'ouvre avec la liste des commits de haut en bas (du plus ancien au plus récent) :
+
    ```text
    pick a1b2c3d feat: ajout v1
    drop e4f5g6h wip debug a supprimer
@@ -56,11 +61,13 @@ Apprendre à nettoyer l'historique de commits avant de partager son code (`squas
 ## Exercice 2 : Débogage avec `git bisect`
 
 ###  Objectif
+
 Retrouver rapidement le commit exact qui a introduit un bug via une recherche dichotomique automatique.
 
 ###  Pas-à-pas d'exécution
 
 1. **Préparer l'historique et introduire une erreur :**
+
    ```bash
    # Commits sains
    echo "def main(): return 0" > app.py && git add app.py && git commit -m "v1.0 stable"
@@ -74,6 +81,7 @@ Retrouver rapidement le commit exact qui a introduit un bug via une recherche di
    ```
 
 2. **Démarrer la session `bisect` :**
+
    ```bash
    git bisect start
    git bisect bad                 # Le commit actuel (HEAD) contient le bug
@@ -81,7 +89,9 @@ Retrouver rapidement le commit exact qui a introduit un bug via une recherche di
    ```
 
 3. **Tester et étiqueter à chaque étape :**
+
    Git va basculer automatiquement sur un commit intermédiaire.
+
    ```bash
    python3 app.py                 # Tester le code
    git bisect bad                 # Si l'erreur se produit
@@ -90,7 +100,9 @@ Retrouver rapidement le commit exact qui a introduit un bug via une recherche di
    ```
 
 4. **Identifier le coupable et quitter `bisect` :**
+
    Une fois le commit fautif affiché par Git, notez son hash puis quittez le mode de débogage :
+
    ```bash
    git bisect reset
    ```
@@ -100,17 +112,20 @@ Retrouver rapidement le commit exact qui a introduit un bug via une recherche di
 ##  Exercice 3 : Gestion des Sous-modules Git (`submodules`)
 
 ###  Objectif
+
 Intégrer et gérer un projet externe ou une dépendance sous forme de dépôt Git imbriqué.
 
 ### Pas-à-pas d'exécution
 
 1. **Ajouter un sous-module au projet principal :**
+
    ```bash
    git submodule add https://github.com/octocat/Spoon-Knife.git lib/Spoon-Knife
    git commit -m "feat: ajout du sous-module Spoon-Knife"
    ```
 
 2. **Cloner un projet contenant des sous-modules :**
+
    ```bash
    # Méthode 1 : Clonage récursif direct
    git clone --recursive <url-du-depot-parent>
@@ -123,6 +138,7 @@ Intégrer et gérer un projet externe ou une dépendance sous forme de dépôt G
    ```
 
 3. **Modifier et pousser des changements depuis le sous-module :**
+
    ```bash
    cd lib/Spoon-Knife
    git checkout main
@@ -132,6 +148,7 @@ Intégrer et gérer un projet externe ou une dépendance sous forme de dépôt G
    ```
 
 4. **Mettre à jour le sous-module dans le projet parent :**
+
    ```bash
    cd ../.. # Retour à la racine du projet parent
    git submodule update --remote --merge
@@ -144,12 +161,15 @@ Intégrer et gérer un projet externe ou une dépendance sous forme de dépôt G
 ##  Exercice 4 : Hooks Git Personnalisés
 
 ###  Objectif
+
 Automatiser des contrôles de qualité (linter, vérifications de sécurité) avant et après les commits.
 
 ###  Pas-à-pas d'exécution
 
 1. **Créer le hook `pre-commit` (Bloque si la chaîne `"debug"` est détectée) :**
+
    Créez le fichier `.git/hooks/pre-commit` :
+
    ```bash
    #!/bin/bash
    if grep -rnw --exclude-dir=.git -E "debug" .; then
@@ -159,19 +179,23 @@ Automatiser des contrôles de qualité (linter, vérifications de sécurité) av
    ```
 
 2. **Créer le hook `post-commit` (Notification post-enregistrement) :**
+
    Créez le fichier `.git/hooks/post-commit` :
+
    ```bash
    #!/bin/bash
    echo "✅ Commit enregistré avec succès dans la branche $(git rev-parse --abbrev-ref HEAD) !"
    ```
 
 3. **Rendre les scripts d'accroche exécutables :**
+
    ```bash
    chmod +x .git/hooks/pre-commit
    chmod +x .git/hooks/post-commit
    ```
 
 4. **Tester la validation :**
+
    ```bash
    # Test invalide (doit échouer)
    echo "print('debug mode')" > test.py
@@ -189,11 +213,15 @@ Automatiser des contrôles de qualité (linter, vérifications de sécurité) av
 ##  Exercice 5 : Travail Hors-ligne et Résolution de Conflits Complexes
 
 ###  Objectif
-Simuler un environnement de travail collaboratif distribué et gérer la résolution de conflits de fusion manuellement et visuellement.
+
+Simuler un environnement de travail collaboratif distribué et gérer la résolution de conflits de fusion manuellement 
+
+et visuellement.
 
 ###  Pas-à-pas d'exécution
 
 1. **Initialiser un dépôt distant et deux clones locaux :**
+
    ```bash
    # Dépôt distant central
    mkdir depot-distant.git && cd depot-distant.git
@@ -213,6 +241,7 @@ Ligne 3: Fin" > main.py
    ```
 
 2. **Générer des modifications divergentes :**
+
    ```bash
    # Alice modifie la ligne 2 et push
    cd clone_alice
@@ -231,6 +260,7 @@ Ligne 3: Fin" > main.py
    ```
 
 3. **Déclencher le conflit de fusion :**
+
    ```bash
    cd clone_bob
    git fetch origin
@@ -251,7 +281,9 @@ Ligne 3: Fin" > main.py
    ```
 
    #### Option B : Outil Visuel (VS Code / Meld)
+
    Configurez votre outil de diff/merge :
+
    ```bash
    # Configuration pour VS Code
    git config merge.tool vscode
@@ -260,7 +292,10 @@ Ligne 3: Fin" > main.py
    # Lancement de l'outil
    git mergetool
    ```
-   Dans **VS Code**, utilisez les boutons d'action au-dessus du conflit (*Accept Current*, *Accept Incoming*, ou *Merge Editor*) pour harmoniser le code, sauvegardez et finalisez :
+   Dans **VS Code**, utilisez les boutons d'action au-dessus du conflit (*Accept Current*, *Accept Incoming*, ou 
+   
+   *Merge Editor*) pour harmoniser le code, sauvegardez et finalisez :
+   
    ```bash
    git add main.py
    git commit -m "fix: résolution visuelle du conflit"
