@@ -1,4 +1,4 @@
 print('Bienvenue dans l app')
 print('Fonctionnalite A')
-print(variable_inexistante)
+print("Option B corrigée")
 print('Fin du programme')
